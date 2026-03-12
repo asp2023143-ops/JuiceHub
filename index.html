@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuiceHub | Digital Recipe Book</title>
+    <meta name="description"
+        content="Discover healthy, refreshing juice recipes for a better lifestyle. Fruit juices, smoothies, and detox drinks.">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/5825/5825340.png" alt="JuiceHub Logo"
+                    class="navbar-logo">
+                JuiceHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Submit Recipe</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Image Slider -->
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active"
+                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.health.com/thmb/DL9FctwSGpWfNRhB6MSO9rAPTwo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-GettyImages-1809098330-94a008f6dfbd4988817501633b88d61f.jpg'); height: 70vh; background-size: cover; background-position: center;">
+                <div class="carousel-caption">
+                    <h2 class="display-4 fw-bold text-white">Fresh Green Detox</h2>
+                    <p class="lead">Cleanse your body with our signature kale and apple blend.</p>
+                    <div><a href="recipes.html" class="btn btn-warning btn-lg rounded-pill px-4">View Recipe</a></div>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.howewelive.com/wp-content/uploads/2015/04/rainbow-juice-5.jpg'); height: 70vh; background-size: cover; background-position: center;">
+                <div class="carousel-caption">
+                    <h2 class="display-4 fw-bold text-white">Rainbow Mix Fruit</h2>
+                    <p class="lead">A vibrant blend of seasonal fruits for a refreshing burst of vitamins.</p>
+                    <div><a href="recipes.html" class="btn btn-warning btn-lg rounded-pill px-4">Explore More</a></div>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoBr2ncdCHfPT3I7cWa-UYM8kSL9vd0FQg_A&s'); height: 70vh; background-size: cover; background-position: center;">
+                <div class="carousel-caption">
+                    <h2 class="display-4 fw-bold text-white">Deep Beetroot Detox</h2>
+                    <p class="lead">Rejuvenate your system with the earthy goodness of beets and carrots.</p>
+                    <div><button onclick="openRecipeModal(55)" class="btn btn-warning btn-lg rounded-pill px-4">See
+                            Ingredients</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </header>
+
+    <main class="py-5">
+        <div class="container">
+            <!-- Benefits Section -->
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                        <i class="fas fa-bolt fa-3x text-warning mb-3"></i>
+                        <h4>Energy Boost</h4>
+                        <p class="small text-muted">Natural nutrients for sustained energy.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                        <i class="fas fa-heartbeat fa-3x text-danger mb-3"></i>
+                        <h4>Immune Support</h4>
+                        <p class="small text-muted">Packed with Vitamin C to stay strong.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                        <i class="fas fa-spa fa-3x text-success mb-3"></i>
+                        <h4>Skin Health</h4>
+                        <p class="small text-muted">Antioxidants for glowing skin.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Philosophy Section -->
+            <div class="row align-items-center mt-5">
+                <div class="col-md-6">
+                    <img src="https://images.stockcake.com/public/4/6/c/46cb8fa2-a6aa-44d5-80b3-d58e53c9ccd1/joyful-juice-gathering-stockcake.jpg"
+                        class="img-fluid rounded-4 shadow" alt="Healthy Lifestyle">
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <h2 class="fw-bold mb-3">Organic & Natural</h2>
+                    <p>Our recipes are crafted with pure ingredients, designed to nourish your body and delight your
+                        taste buds. Every glass is a step towards a healthier you.</p>
+                    <a href="contact.html" class="btn btn-submit">Submit Your Recipe</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Break -->
+    <div class="my-5"></div>
+
+    <!-- Featured Recipes Selection -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Recipes</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="recipe-card card">
+                        <img src="https://www.cubesnjuliennes.com/wp-content/uploads/2021/04/Fresh-Watermelon-Juice-Recipe-500x375.jpg"
+                            class="card-img-top" alt="Watermelon Juice">
+                        <div class="card-body">
+                            <span class="recipe-tag">Fruit Juice</span>
+                            <h5 class="card-title">Cold Watermelon Crush</h5>
+                            <p class="card-text">Watermelon, Lime, Mint, and a pinch of Black Salt.</p>
+                            <button onclick="openRecipeModal(1)" class="btn btn-outline-success rounded-pill">View
+                                Ingredients</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="recipe-card card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-pRR5s5Gcf5DVi3lPX6yy16Sm-GF0mNGhIQ&s"
+                            class="card-img-top" alt="Orange Juice">
+                        <div class="card-body">
+                            <span class="recipe-tag">Fruit Juice</span>
+                            <h5 class="card-title">Classic Orange Squeeze</h5>
+                            <p class="card-text">100% Pure Squeezed Oranges served over crushed ice.</p>
+                            <button onclick="openRecipeModal(2)" class="btn btn-outline-success rounded-pill">View
+                                Ingredients</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="recipe-card card">
+                        <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/10/carrot-juice-1200x628-facebook-1200x628.jpg"
+                            class="card-img-top" alt="Carrot juice">
+                        <div class="card-body">
+                            <span class="recipe-tag">Vegetable</span>
+                            <h5 class="card-title">Vitality Carrot Cleanse</h5>
+                            <p class="card-text">Fresh Carrots and Zesty Ginger with a hint of Lemon.</p>
+                            <button onclick="openRecipeModal(3)" class="btn btn-outline-success rounded-pill">View
+                                Ingredients</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5>JuiceHub</h5>
+                    <p>Your daily dose of health in a glass. Explore, learn, and share the best juice recipes curated
+                        for you.</p>
+                </div>
+                <div class="col-lg-4 text-lg-center">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="recipes.html" class="footer-link">Recipes</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact & Submit</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex justify-content-lg-end gap-3 mt-3">
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="footer-link fs-4"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 border-light opacity-25">
+            <div class="text-center">
+                <p class="mb-0 small">&copy; 2026 JuiceHub Digital Recipe Book. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Recipe Modal -->
+    <div class="modal fade" id="recipeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-5"><img src="" id="modalImage" class="img-fluid h-100 object-fit-cover"
+                            alt="Recipe"></div>
+                    <div class="col-md-7">
+                        <div class="modal-header border-0 pb-0">
+                            <h3 class="modal-title fw-bold" id="modalTitle"></h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <div class="mb-3"><span class="badge bg-success" id="modalCategory"></span></div>
+                            <h5>Ingredients</h5>
+                            <ul id="modalIngredients"></ul>
+                            <h5>Instructions</h5>
+                            <p id="modalInstructions" class="text-muted small"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
