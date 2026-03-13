@@ -59,3 +59,59 @@ window.openRecipeModal = (id) => {
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
 }
+
+// --- Form Submission & Validation Logic ---
+function setupFormValidation() {
+    // 1. Get the form element by its ID
+    const form = document.getElementById('submissionForm');
+    
+    // Safety check: only run this if the form exists on the current page
+    if (!form) return;
+
+    // 2. Listen for the 'submit' event
+    form.addEventListener('submit', (e) => {
+        // Prevent the page from refreshing automatically
+        e.preventDefault();
+
+        // 3. Check if all required fields are filled correctly
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            // Add Bootstrap validation styles (red borders)
+            form.classList.add('was-validated');
+        } else {
+            // 4. If the form is valid, capture the data into a new object
+            const newRecipe = {
+                id: Date.now(), // Generate a unique ID using current timestamp
+                title: document.getElementById('recipeTitle').value,
+                category: document.getElementById('recipeCategory').value,
+                image: document.getElementById('recipeImage').value,
+                time: "10-15 mins", // Standard time for new submissions
+                // Split ingredients by new lines and remove empty lines
+                ingredients: document.getElementById('recipeIngredients').value.split('\n').filter(i => i.trim() !== ""),
+                instructions: document.getElementById('recipeInstructions').value
+            };
+
+            // 5. Save to Browser's Local Storage
+            // Get existing user recipes or start with an empty array
+            const userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
+            // Add the new recipe to the list
+            userRecipes.push(newRecipe);
+            // Save the updated list back to storage
+            localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
+
+            // 6. Show the Success Popup (Modal)
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+
+            // 7. Reset the form for the next entry
+            form.reset();
+            form.classList.remove('was-validated');
+        }
+    });
+}
+
+// --- Page Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Run the form setup when the page finishes loading
+    setupFormValidation();
+});
