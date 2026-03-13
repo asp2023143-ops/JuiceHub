@@ -1,0 +1,180 @@
+/* --- Base Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #52b788;
+    --secondary-color: #ff9f1c;
+    --accent-color: #74c69d;
+    --text-color: #ffffff;
+    --text-muted: #b0b0b0;
+    --light-bg: #000000;
+    --card-bg: #111111;
+    --glass: rgba(0, 0, 0, 0.85);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: #e0e0e0;
+    background-color: var(--light-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+.section-title h2 {
+    color: var(--primary-color) !important;
+}
+
+/* --- Navigation --- */
+.navbar {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-logo {
+    height: 40px;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* --- Hero Slider (Carousel) --- */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 1.5rem 2.5rem;
+    bottom: 12%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Featured Recipes & Cards --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.recipe-card {
+    border-radius: 20px;
+    background: #0a0a0a;
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.recipe-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(82, 183, 136, 0.1);
+}
+
+.recipe-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.recipe-card .card-title {
+    color: var(--secondary-color) !important;
+    font-weight: 700;
+}
+
+.recipe-tag {
+    font-size: 0.75rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(82, 183, 136, 0.15);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* --- Shared Components (Modal & Buttons) --- */
+.modal-content {
+    background-color: #111 !important;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-submit {
+    background: var(--primary-color);
+    color: #000;
+    padding: 14px 40px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.bg-light {
+    background-color: #050505 !important;
+}
+
+/* --- Footer --- */
+footer {
+    background: #0a1b15;
+    color: #e0e0e0;
+    padding: 5rem 0 3rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+footer h5 {
+    color: var(--primary-color);
+}
+
+.footer-link {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .carousel-caption h2 {
+        font-size: 2rem;
+    }
+}
