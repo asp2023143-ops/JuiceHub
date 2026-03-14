@@ -253,3 +253,116 @@ footer h5 {
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* --- Section Titles --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-title h2 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+/* --- Filter Buttons (All, Fruit, Smoothies, Veggie, Detox) --- */
+.filter-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.05); /* Glass-like semi-transparent background */
+    padding: 10px 28px;
+    border-radius: 25px; /* Pill shape */
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary-color); /* Changes to green when active/hover */
+    color: #000;
+    border-color: var(--primary-color);
+}
+
+/* --- Recipe Cards (Generated via JS into #recipeGrid) --- */
+.recipe-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    background: #0a0a0a;
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.recipe-card:hover {
+    transform: translateY(-8px); /* Card lifts slightly on hover */
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(82, 183, 136, 0.1);
+}
+
+.recipe-card img {
+    height: 250px;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.recipe-card .card-body {
+    padding: 1.8rem;
+    background: var(--card-bg);
+}
+
+.recipe-card .card-title {
+    color: var(--secondary-color) !important;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.recipe-card:hover .card-title {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(255, 159, 28, 0.4);
+}
+
+/* --- Delete Button (Inside the generated Recipe Card) --- */
+.btn-delete-sm {
+    background: rgba(220, 53, 69, 0.1); /* Soft red background */
+    color: #dc3545; /* Red icon color */
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.btn-delete-sm:hover {
+    background: #dc3545;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
+}
+
+/* --- Search Input Styling --- */
+/* The search bar uses general form-control styling with Bootstrap utility classes */
+.form-control {
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.form-control:focus {
+    background: #1a1a1a;
+    box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.15);
+    border-color: var(--primary-color);
+    color: #ffffff;
+    outline: none;
+}
