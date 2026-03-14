@@ -1,11 +1,11 @@
-// --- Recipe Data Array ---
-// This contains the details for the featured recipes shown on the home page.
+// --- Recipe Data ---
 const defaultRecipes = [
     {
         id: 1,
         title: "Cold Watermelon Crush",
         category: "fruit",
         image: "https://www.cubesnjuliennes.com/wp-content/uploads/2021/04/Fresh-Watermelon-Juice-Recipe-500x375.jpg",
+        time: "5 mins",
         ingredients: ["Watermelon", "Lime", "Mint", "Pinch of Black Salt"],
         instructions: "Blend fresh watermelon cubes until smooth. Strain for a clear juice. Stir in lime juice and black salt. Garnish with fresh mint leaves."
     },
@@ -14,6 +14,7 @@ const defaultRecipes = [
         title: "Classic Orange Squeeze",
         category: "fruit",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-pRR5s5Gcf5DVi3lPX6yy16Sm-GF0mNGhIQ&s",
+        time: "5 mins",
         ingredients: ["4 Large Juicy Oranges", "Crushed Ice"],
         instructions: "Slice oranges in half. Use a manual or electric citrus juicer to extract the juice. Serve chilled over crushed ice."
     },
@@ -22,137 +23,152 @@ const defaultRecipes = [
         title: "Vitality Carrot Cleanse",
         category: "vegetable",
         image: "https://media.post.rvohealth.io/wp-content/uploads/2020/10/carrot-juice-1200x628-facebook-1200x628.jpg",
+        time: "10 mins",
         ingredients: ["5 Large Carrots", "1/2 inch Ginger", "1 tsp Lemon juice"],
         instructions: "Wash and peel carrots. Run them through a juicer along with the ginger. Add lemon juice and stir."
+    },
+    {
+        id: 4,
+        title: "Hydrating Cucumber Cool",
+        category: "vegetable",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3RXm5zHAzb_gPhRnJNi7Cl9BX2y5_6mxq6w&s",
+        time: "5 mins",
+        ingredients: ["2 Large Cucumbers", "1/2 Lime", "Small pinch of Sea Salt", "2 Mint leaves"],
+        instructions: "Juice the cucumbers. Squeeze in the lime juice and add a pinch of salt. Garnish with mint and serve."
     },
     {
         id: 55,
         title: "Deep Beetroot Detox",
         category: "detox",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoBr2ncdCHfPT3I7cWa-UYM8kSL9vd0FQg_A&s",
+        time: "12 mins",
         ingredients: ["1 Medium Beetroot", "2 Carrots", "1 Green Apple", "1/2 Lemon"],
         instructions: "Peel the beetroot. Juice all ingredients together. The apple balances the earthy beet flavor."
+    },
+    {
+        id: 6,
+        title: "Fresh Mango Nectar",
+        category: "fruit",
+        image: "https://www.realsimple.com/thmb/Kldsl-2wgCKXH6eQzsOX-chnin8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/health-benefits-of-mango-juice-GettyImages-1147373774-f7ebf4e4c13f4f67a2420df3c4325a04.jpg",
+        time: "10 mins",
+        ingredients: ["2 Ripe Mangoes", "1/2 cup Water", "1 tbsp Lime juice", "1 tsp Honey"],
+        instructions: "Peel and slice mangoes. Blend with water and lime juice until smooth. Sweeten with honey if needed."
+    },
+    {
+        id: 7,
+        title: "Creamy Banana Boost",
+        category: "smoothie",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD_vdiXfuXSPfODUansVjz7U29ccbmJOF2RA&s",
+        time: "5 mins",
+        ingredients: ["2 Ripe Bananas", "1 cup Milk of choice", "1/4 cup Oats", "A pinch of Cinnamon"],
+        instructions: "Place all ingredients in a blender. Blend until creamy and smooth. Top with an extra dash of cinnamon."
+    },
+    {
+        id: 8,
+        title: "Rainbow Mix Fruit",
+        category: "fruit",
+        image: "https://www.howewelive.com/wp-content/uploads/2015/04/rainbow-juice-5.jpg",
+        time: "12 mins",
+        ingredients: ["1 Apple", "1 Orange", "1 cup Pineapple", "1/2 cup Strawberries", "1 tbsp Lime juice"],
+        instructions: "Juice all the fruits together. Stir in lime juice and serve immediately for maximum freshness."
+    },
+    {
+        id: 9,
+        title: "Perfect Avocado Silk",
+        category: "smoothie",
+        image: "https://t4.ftcdn.net/jpg/18/92/10/53/360_F_1892105325_oUsFuwHKbVm7ekJoTmigtHxGCgzZ3zZh.jpg",
+        time: "8 mins",
+        ingredients: ["1 Ripe Avocado", "1 cup Milk", "2 tbsp Condensed milk or Honey", "Ice cubes"],
+        instructions: "Blend the avocado flesh with milk and sweetener until very smooth. Add ice and pulse for a chilled shake."
+    },
+    {
+        id: 10,
+        title: "Classic Mint Mojito",
+        category: "detox",
+        image: "https://thumbs.dreamstime.com/b/indulge-vibrant-flavors-classic-mojito-expertly-crafted-fresh-mint-leaves-bright-lime-juice-chilled-ice-373656004.jpg",
+        time: "5 mins",
+        ingredients: ["10 Fresh Mint leaves", "1 Lime", "2 tbsp Sugar or Syrup", "Soda water", "Crushed Ice"],
+        instructions: "Muddle mint and lime wedges with sugar. Fill with crushed ice and top with soda water. Stir gently."
+    },
+    {
+        id: 11,
+        title: "Pineapple Ginger Cleanser",
+        category: "detox",
+        image: "https://thumbs.dreamstime.com/b/fresh-pineapple-turmeric-juice-raw-ingredients-stone-background-golden-yellow-detox-juice-turmeric-root-glass-390311440.jpg",
+        time: "10 mins",
+        ingredients: ["1/2 Fresh Pineapple", "2 inch Fresh Ginger", "1/2 Lemon", "1 cup Water"],
+        instructions: "Peel and core pineapple. Juice with ginger and lemon. Dilute with water if needed. Serve chilled."
+    },
+    {
+        id: 12,
+        title: "Aloe Vera + Lime Drink",
+        category: "detox",
+        image: "https://thumbs.dreamstime.com/b/refreshing-aloe-vera-drink-lime-slices-soft-green-background-clear-glass-juice-leaves-concept-natural-refreshment-390282282.jpg",
+        time: "8 mins",
+        ingredients: ["2 tbsp Aloe Vera gel (fresh)", "1 Lime", "1 cup Water", "1 tsp Honey"],
+        instructions: "Scoop fresh aloe gel. Blend with water, lime juice, and honey. Strain and serve immediately."
+    },
+    {
+        id: 13,
+        title: "Lemon Ginger Detox",
+        category: "detox",
+        image: "https://sc02.alicdn.com/kf/Hf44c43ccd1054b6f85741679c6caaf03f.png",
+        time: "5 mins",
+        ingredients: ["1 Lemon", "1 inch Ginger", "1 cup Warm water", "Pinch of Cayenne pepper"],
+        instructions: "Squeeze lemon into water. Grate ginger and squeeze juice out. Add cayenne. Best consumed in the morning."
+    },
+    {
+        id: 14,
+        title: "Spinach (Green) Juice",
+        category: "vegetable",
+        image: "https://yummyindiankitchen.com/wp-content/uploads/2024/05/spinach-juice-recipe-homemade-and-fresh.jpg",
+        time: "10 mins",
+        ingredients: ["2 cups Fresh Spinach", "1 Cucumber", "1 Green Apple", "1/2 Lime"],
+        instructions: "Wash spinach and cucumber. Juice all ingredients together. Squeeze lime at the end and stir."
     }
 ];
 
-// --- Modal Functionality ---
-// This function is triggered when a user clicks "View Ingredients" or "See Ingredients".
-window.openRecipeModal = (id) => {
-    // 1. Find the recipe object in the data array using the provided ID.
-    const recipe = defaultRecipes.find(r => r.id === id);
-    if (!recipe) return;
+let recipes = [];
 
-    // 2. Update the HTML elements inside the Modal with the recipe data.
-    document.getElementById('modalTitle').innerText = recipe.title;
-    document.getElementById('modalImage').src = recipe.image;
-    document.getElementById('modalCategory').innerText = recipe.category.toUpperCase();
-    
-    // 3. Convert the ingredients array into a list of <li> elements.
-    document.getElementById('modalIngredients').innerHTML = recipe.ingredients
-        .map(ing => `<li>${ing}</li>`).join('');
-        
-    // 4. Update the instructions text.
-    document.getElementById('modalInstructions').innerText = recipe.instructions;
-
-    // 5. Initialize and show the Bootstrap Modal.
-    const modalElement = document.getElementById('recipeModal');
-    const modal = new bootstrap.Modal(modalElement);
-    modal.show();
-}
-
-// --- Form Submission & Validation Logic ---
-function setupFormValidation() {
-    // 1. Get the form element by its ID
-    const form = document.getElementById('submissionForm');
-    
-    // Safety check: only run this if the form exists on the current page
-    if (!form) return;
-
-    // 2. Listen for the 'submit' event
-    form.addEventListener('submit', (e) => {
-        // Prevent the page from refreshing automatically
-        e.preventDefault();
-
-        // 3. Check if all required fields are filled correctly
-        if (!form.checkValidity()) {
-            e.stopPropagation();
-            // Add Bootstrap validation styles (red borders)
-            form.classList.add('was-validated');
-        } else {
-            // 4. If the form is valid, capture the data into a new object
-            const newRecipe = {
-                id: Date.now(), // Generate a unique ID using current timestamp
-                title: document.getElementById('recipeTitle').value,
-                category: document.getElementById('recipeCategory').value,
-                image: document.getElementById('recipeImage').value,
-                time: "10-15 mins", // Standard time for new submissions
-                // Split ingredients by new lines and remove empty lines
-                ingredients: document.getElementById('recipeIngredients').value.split('\n').filter(i => i.trim() !== ""),
-                instructions: document.getElementById('recipeInstructions').value
-            };
-
-            // 5. Save to Browser's Local Storage
-            // Get existing user recipes or start with an empty array
-            const userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
-            // Add the new recipe to the list
-            userRecipes.push(newRecipe);
-            // Save the updated list back to storage
-            localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
-
-            // 6. Show the Success Popup (Modal)
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-
-            // 7. Reset the form for the next entry
-            form.reset();
-            form.classList.remove('was-validated');
-        }
-    });
-}
-
-// --- Page Initialization ---
-document.addEventListener('DOMContentLoaded', () => {
-    // Run the form setup when the page finishes loading
-    setupFormValidation();
-});
-// Array to hold the combined list of default and user-added recipes
-let recipes = []; 
-
-// --- Load Recipes ---
-// This function loads the recipes into the 'recipes' array
+// Load recipes from default + localStorage
 function loadRecipes() {
-    // 1. Get user-submitted recipes from the browser's Local Storage
     const userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
-    
-    // 2. Get the list of IDs of default recipes the user has deleted
     const deletedDefaultIds = JSON.parse(localStorage.getItem('deletedDefaultIds')) || [];
 
-    // 3. Filter out the default recipes that have been marked as deleted
     const filteredDefaults = defaultRecipes.filter(r => !deletedDefaultIds.includes(r.id));
-    
-    // 4. Combine the remaining default recipes and user recipes
     recipes = [...filteredDefaults, ...userRecipes];
 }
 
-// Initial load
 loadRecipes();
 
-// --- Display Recipes ---
-// This function renders the recipe cards onto the HTML page
+// --- Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Determine which page we are on
+    const recipeGrid = document.getElementById('recipeGrid');
+    const submissionForm = document.getElementById('submissionForm');
+
+    if (recipeGrid) {
+        displayRecipes(recipes);
+        setupFilters();
+        setupSearch();
+    }
+
+    if (submissionForm) {
+        setupFormValidation();
+    }
+});
+
+// --- Recipe Display Logic ---
 function displayRecipes(recipeList) {
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
-    
-    // Clear any existing HTML inside the grid
-    grid.innerHTML = ''; 
+    grid.innerHTML = '';
 
-    // If there are no recipes to show, display a friendly message
     if (recipeList.length === 0) {
         grid.innerHTML = '<div class="col-12 text-center py-5"><h3>No recipes found.</h3><p>Try a different search or category!</p></div>';
         return;
     }
 
-    // Loop through the list and create an HTML card for each recipe
     recipeList.forEach(recipe => {
         const card = `
             <div class="col-md-4 col-sm-6 mb-4">
@@ -174,27 +190,21 @@ function displayRecipes(recipeList) {
                 </div>
             </div>
         `;
-        // Append the newly created card to the grid
         grid.innerHTML += card;
     });
 }
 
-// --- Setup Filters ---
-// This handles the category buttons (All, Fruit, Smoothies, etc.)
+// --- Filter Logic ---
 function setupFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
 
     filterBtns.forEach(btn => {
         btn.onclick = () => {
-            // Remove the 'active' styling from all buttons
+            // Update active state
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add 'active' styling to the clicked button
             btn.classList.add('active');
 
-            // Get the category from the button's data attribute
             const category = btn.getAttribute('data-category');
-            
-            // If 'all' is clicked, show everything. Otherwise, filter the list.
             if (category === 'all') {
                 displayRecipes(recipes);
             } else {
@@ -205,45 +215,51 @@ function setupFilters() {
     });
 }
 
-// --- Setup Search ---
-// This handles the live search bar functionality
+// --- Search Logic ---
 function setupSearch() {
     const searchInput = document.getElementById('recipeSearch');
     if (!searchInput) return;
 
-    // Listen to every keystroke in the search bar
     searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase(); // Get the typed text
+        const query = e.target.value.toLowerCase();
 
-        // Filter recipes based on title, ingredients, or category matching the typed text
         const searched = recipes.filter(recipe =>
             recipe.title.toLowerCase().includes(query) ||
             recipe.ingredients.some(ing => ing.toLowerCase().includes(query)) ||
             recipe.category.toLowerCase().includes(query)
         );
 
-        // Display the search results
         displayRecipes(searched);
     });
 }
 
-// --- Delete Recipe ---
-// This function removes a recipe when the trash can icon is clicked
+// --- Modal Logic ---
+window.openRecipeModal = (id) => {
+    const recipe = recipes.find(r => r.id === id);
+    if (!recipe) return;
+
+    document.getElementById('modalTitle').innerText = recipe.title;
+    document.getElementById('modalImage').src = recipe.image;
+    document.getElementById('modalCategory').innerText = recipe.category.toUpperCase();
+    document.getElementById('modalIngredients').innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
+    document.getElementById('modalInstructions').innerText = recipe.instructions;
+
+    const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
+    modal.show();
+}
+
+// --- Delete Logic ---
 window.deleteRecipe = (id) => {
-    // Show a browser confirmation popup before deleting
     if (confirm("Are you sure you want to delete this recipe?")) {
-        
-        // 1. Check if the recipe exists in the user's custom recipes
+        // Try removing from userRecipes
         let userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
         const originalUserCount = userRecipes.length;
         userRecipes = userRecipes.filter(r => r.id !== id);
 
-        // If it was a user recipe, save the updated user recipes list
         if (userRecipes.length < originalUserCount) {
             localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
         } else {
-            // 2. If it wasn't a user recipe, it must be a default recipe. 
-            // Save its ID to the deleted list so it doesn't show up again.
+            // If not in userRecipes, it's a default one. Track it as deleted.
             let deletedDefaultIds = JSON.parse(localStorage.getItem('deletedDefaultIds')) || [];
             if (!deletedDefaultIds.includes(id)) {
                 deletedDefaultIds.push(id);
@@ -251,10 +267,8 @@ window.deleteRecipe = (id) => {
             }
         }
 
-        // 3. Reload the master recipe list
+        // Refresh data and UI
         loadRecipes();
-        
-        // 4. Update the screen while remembering the currently active filter
         const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-category');
 
         if (activeFilter === 'all') {
@@ -265,15 +279,42 @@ window.deleteRecipe = (id) => {
     }
 }
 
-// --- Page Initialization ---
-// This event triggers when the HTML document has completely loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const recipeGrid = document.getElementById('recipeGrid');
+// --- Form Validation ---
+function setupFormValidation() {
+    const form = document.getElementById('submissionForm');
+    if (!form) return;
 
-    // Only run these functions if we are on recipes.html (which has #recipeGrid)
-    if (recipeGrid) {
-        displayRecipes(recipes);
-        setupFilters();
-        setupSearch();
-    }
-});
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            form.classList.add('was-validated');
+        } else {
+            // Capture data
+            const newRecipe = {
+                id: Date.now(),
+                title: document.getElementById('recipeTitle').value,
+                category: document.getElementById('recipeCategory').value,
+                image: document.getElementById('recipeImage').value,
+                time: "10-15 mins",
+                ingredients: document.getElementById('recipeIngredients').value.split('\n').filter(i => i.trim() !== ""),
+                instructions: document.getElementById('recipeInstructions').value
+            };
+
+            // Save to localStorage
+            const userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
+            userRecipes.push(newRecipe);
+            localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
+
+            // Reload global recipes array
+            loadRecipes();
+
+            // If valid, show success modal
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            form.reset();
+            form.classList.remove('was-validated');
+        }
+    });
+}
