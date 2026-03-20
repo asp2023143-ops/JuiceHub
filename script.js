@@ -145,7 +145,6 @@ loadRecipes();
 document.addEventListener('DOMContentLoaded', () => {
     // Determine which page we are on
     const recipeGrid = document.getElementById('recipeGrid');
-    const submissionForm = document.getElementById('submissionForm');
 
     if (recipeGrid) {
         displayRecipes(recipes);
@@ -153,9 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSearch();
     }
 
-    if (submissionForm) {
-        setupFormValidation();
-    }
+    setupFormValidation();
 });
 
 // --- Recipe Display Logic ---
@@ -281,40 +278,111 @@ window.deleteRecipe = (id) => {
 
 // --- Form Validation ---
 function setupFormValidation() {
-    const form = document.getElementById('submissionForm');
-    if (!form) return;
+    const forms = document.querySelectorAll('.js-validated-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.add('was-validated');
+            } else {
+                e.preventDefault();
+                
+                const pageHref = window.location.href.toLowerCase();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Success';
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+                const showMessageAndRedirect = (msg, redirectUrl, isError = false) => {
+                    // Remove any existing alerts in the form first
+                    const existingAlert = form.querySelector('.alert.mt-3.text-center');
+                    if (existingAlert) existingAlert.remove();
 
-        if (!form.checkValidity()) {
-            e.stopPropagation();
-            form.classList.add('was-validated');
-        } else {
-            // Capture data
-            const newRecipe = {
-                id: Date.now(),
-                title: document.getElementById('recipeTitle').value,
-                category: document.getElementById('recipeCategory').value,
-                image: document.getElementById('recipeImage').value,
-                time: "10-15 mins",
-                ingredients: document.getElementById('recipeIngredients').value.split('\n').filter(i => i.trim() !== ""),
-                instructions: document.getElementById('recipeInstructions').value
-            };
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = `alert alert-${isError ? 'danger' : 'success'} mt-3 text-center fw-bold shadow-sm`;
+                    alertDiv.style.fontSize = "1.1rem"; // Make it clearer
+                    alertDiv.innerText = msg;
+                    form.appendChild(alertDiv);
+                    
+                    if (!isError && submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Please wait...';
+                    }
+                    
+                    if (redirectUrl && !isError) {
+                        setTimeout(() => {
+                            window.location.href = redirectUrl;
+                        }, 3000); // Wait 3 seconds to let them read success message
+                    } else {
+                        // If it's an error or no redirect, re-enable button immediately.
+                        // We DO NOT remove the alertDiv here so the error message stays clearly visible!
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                        }
+                        if (!isError) {
+                            form.reset();
+                            form.classList.remove('was-validated');
+                        }
+                    }
+                };
 
-            // Save to localStorage
-            const userRecipes = JSON.parse(localStorage.getItem('userRecipes')) || [];
-            userRecipes.push(newRecipe);
-            localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
-
-            // Reload global recipes array
-            loadRecipes();
-
-            // If valid, show success modal
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-            form.reset();
-            form.classList.remove('was-validated');
-        }
+                if (pageHref.includes('login.html')) {
+                    const formData = new FormData(form);
+                    fetch('login.php', { method: 'POST', body: formData })
+                        .then(res => res.text())
+                        .then(text => {
+                            if (text.includes('successful')) {
+                                showMessageAndRedirect(text, 'index.html');
+                            } else {
+                                showMessageAndRedirect(text, null, true);
+                            }
+                        })
+                        .catch(err => showMessageAndRedirect('Network error. Database might not be running.', null, true));
+                } else if (pageHref.includes('register.html')) {
+                    const formData = new FormData(form);
+                    fetch('register.php', { method: 'POST', body: formData })
+                        .then(res => res.text())
+                        .then(text => {
+                            if (text.includes('successful')) {
+                                showMessageAndRedirect(text, 'login.html');
+                            } else {
+                                showMessageAndRedirect(text, null, true);
+                            }
+                        })
+                        .catch(err => showMessageAndRedirect('Network error. Database might not be running.', null, true));
+                } else if (pageHref.includes('contact.html')) {
+                    const formData = new FormData(form);
+                    fetch('contact.php', { method: 'POST', body: formData })
+                        .then(res => res.text())
+                        .then(text => {
+                            if (text.includes('successfully')) {
+                                showMessageAndRedirect(text, null);
+                            } else {
+                                showMessageAndRedirect(text, null, true);
+                            }
+                        })
+                        .catch(err => showMessageAndRedirect('Network error. Database might not be running.', null, true));
+                } else if (pageHref.includes('submit_recipe.html')) {
+                    const formData = new FormData(form);
+                    fetch('submit_recipe.php', { method: 'POST', body: formData })
+                        .then(res => res.text())
+                        .then(text => {
+                            if (text.includes('successfully')) {
+                                showMessageAndRedirect(text, 'index.html');
+                            } else {
+                                showMessageAndRedirect(text, null, true);
+                            }
+                        })
+                        .catch(err => showMessageAndRedirect('Network error. Database might not be running.', null, true));
+                } else {
+                    const action = form.getAttribute('action');
+                    if (action && action !== '#') {
+                        showMessageAndRedirect('Form submitted successfully!', action);
+                    } else {
+                        showMessageAndRedirect('Form submitted successfully!', null);
+                    }
+                }
+            }
+        });
     });
 }
