@@ -1,6 +1,9 @@
 <?php
 require_once 'db.php';
 
+header('Content-Type: application/json');
+$response = ['success' => false, 'message' => ''];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $name = $_POST['name'] ?? '';
@@ -12,12 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Insert contact message into the database
             $stmt = $pdo->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
             $stmt->execute([$name, $email, $message]);
-            echo "Your message has been received successfully.";
+            $response['success'] = true;
+            $response['message'] = "Your message has been received successfully.";
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            $response['message'] = "Database error: " . $e->getMessage();
         }
     } else {
-        echo "Please fill in all the fields.";
+        $response['message'] = "Please fill in all the fields.";
     }
+} else {
+    $response['message'] = "Invalid request method.";
 }
+
+echo json_encode($response);
 ?>

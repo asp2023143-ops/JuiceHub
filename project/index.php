@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,7 +21,7 @@
     <!-- Header / Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
                 <img src="https://cdn-icons-png.flaticon.com/512/5825/5825340.png" alt="JuiceHub Logo"
                     class="navbar-logo">
                 JuiceHub
@@ -30,9 +31,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Submit Recipe</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recipes.php">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="submit_recipe.php">Submit Recipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="auth/logout.php">Logout</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -51,7 +60,7 @@
                 <div class="carousel-caption">
                     <h2 class="display-4 fw-bold text-white">Fresh Green Detox</h2>
                     <p class="lead">Cleanse your body with our signature kale and apple blend.</p>
-                    <div><a href="recipes.html" class="btn btn-warning btn-lg rounded-pill px-4">View Recipe</a></div>
+                    <div><a href="recipes.php" class="btn btn-warning btn-lg rounded-pill px-4">View Recipe</a></div>
                 </div>
             </div>
             <div class="carousel-item"
@@ -59,7 +68,7 @@
                 <div class="carousel-caption">
                     <h2 class="display-4 fw-bold text-white">Rainbow Mix Fruit</h2>
                     <p class="lead">A vibrant blend of seasonal fruits for a refreshing burst of vitamins.</p>
-                    <div><a href="recipes.html" class="btn btn-warning btn-lg rounded-pill px-4">Explore More</a></div>
+                    <div><a href="recipes.php" class="btn btn-warning btn-lg rounded-pill px-4">Explore More</a></div>
                 </div>
             </div>
             <div class="carousel-item"
@@ -118,7 +127,7 @@
                     <h2 class="fw-bold mb-3">Organic & Natural</h2>
                     <p>Our recipes are crafted with pure ingredients, designed to nourish your body and delight your
                         taste buds. Every glass is a step towards a healthier you.</p>
-                    <a href="contact.html" class="btn btn-submit">Submit Your Recipe</a>
+                    <a href="submit_recipe.php" class="btn btn-submit">Submit Your Recipe</a>
                 </div>
             </div>
         </div>
@@ -130,49 +139,14 @@
     <!-- Featured Recipes Selection -->
     <section class="bg-light py-5">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title text-center mb-5">
                 <h2>Featured Recipes</h2>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="recipe-card card">
-                        <img src="https://www.cubesnjuliennes.com/wp-content/uploads/2021/04/Fresh-Watermelon-Juice-Recipe-500x375.jpg"
-                            class="card-img-top" alt="Watermelon Juice">
-                        <div class="card-body">
-                            <span class="recipe-tag">Fruit Juice</span>
-                            <h5 class="card-title">Cold Watermelon Crush</h5>
-                            <p class="card-text">Watermelon, Lime, Mint, and a pinch of Black Salt.</p>
-                            <button onclick="openRecipeModal(1)" class="btn btn-outline-success rounded-pill">View
-                                Ingredients</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="recipe-card card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-pRR5s5Gcf5DVi3lPX6yy16Sm-GF0mNGhIQ&s"
-                            class="card-img-top" alt="Orange Juice">
-                        <div class="card-body">
-                            <span class="recipe-tag">Fruit Juice</span>
-                            <h5 class="card-title">Classic Orange Squeeze</h5>
-                            <p class="card-text">100% Pure Squeezed Oranges served over crushed ice.</p>
-                            <button onclick="openRecipeModal(2)" class="btn btn-outline-success rounded-pill">View
-                                Ingredients</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="recipe-card card">
-                        <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/10/carrot-juice-1200x628-facebook-1200x628.jpg"
-                            class="card-img-top" alt="Carrot juice">
-                        <div class="card-body">
-                            <span class="recipe-tag">Vegetable</span>
-                            <h5 class="card-title">Vitality Carrot Cleanse</h5>
-                            <p class="card-text">Fresh Carrots and Zesty Ginger with a hint of Lemon.</p>
-                            <button onclick="openRecipeModal(3)" class="btn btn-outline-success rounded-pill">View
-                                Ingredients</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-4" id="recipeGrid" data-limit="3">
+                <!-- Recipes injected via JS -->
+            </div>
+            <div class="text-center mt-5">
+                <a href="recipes.php" class="btn btn-warning btn-lg rounded-pill px-5">View All Recipes</a>
             </div>
         </div>
     </section>
@@ -189,9 +163,9 @@
                 <div class="col-lg-4 text-lg-center">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="footer-link">Home</a></li>
-                        <li><a href="recipes.html" class="footer-link">Recipes</a></li>
-                        <li><a href="contact.html" class="footer-link">Contact & Submit</a></li>
+                        <li><a href="index.php" class="footer-link">Home</a></li>
+                        <li><a href="recipes.php" class="footer-link">Recipes</a></li>
+                        <li><a href="contact.php" class="footer-link">Contact & Submit</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 text-lg-end">
@@ -237,7 +211,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js?v=1.1"></script>
 </body>
 
 </html>
